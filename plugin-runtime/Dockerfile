@@ -2,7 +2,10 @@
 
 FROM ubuntu:18.04
 
+SHELL ["/bin/bash", "-c"]
+
 ENV PY_VERSION=3.6.10
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update
 RUN apt install --no-install-recommends \
@@ -13,10 +16,22 @@ RUN apt install --no-install-recommends \
 
 RUN curl https://pyenv.run | bash
 
+# init python libs
 ENV PATH="/root/.pyenv/bin:$PATH"
 RUN eval "$(pyenv init -)"
 RUN eval "$(pyenv virtualenv-init -)"
 
 ENV PY_DIR=/root/.pyenv/versions/${PY_VERSION}/bin
 RUN pyenv install ${PY_VERSION}
+RUN pyenv global 3.6.10
 RUN ${PY_DIR}/python3 -m pip install requests==2.22.0 python-lib-flow.ci==1.0.18
+
+# write to bashrc
+RUN echo -e '\nif command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\n  eval "$(pyenv virtualenv-init -)"\nfi' >> ~/.bashrc
+
+# cleanup
+RUN rm /usr/bin/python3*
+RUN rm -r /usr/lib/python3*
+RUN rm -r /usr/share/python3*
+RUN rm -r /usr/local/lib/python3*
+RUN rm -r /etc/python3*

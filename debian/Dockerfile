@@ -4,6 +4,7 @@ ENV PY_VERSION=3.6.10
 ENV TARGET_VOLUME=/target
 ENV WORKSPACE=/ws
 ENV LIB_DIR=/ws/lib
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update
 RUN apt install --no-install-recommends \

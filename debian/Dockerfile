@@ -21,7 +21,7 @@ RUN eval "$(pyenv virtualenv-init -)"
 
 ENV PY_DIR=/root/.pyenv/versions/${PY_VERSION}/bin
 RUN pyenv install ${PY_VERSION}
-RUN ${PY_DIR}/python3 -m pip install requests==2.22.0 python-lib-flow.ci==1.0.18
+RUN ${PY_DIR}/python3 -m pip install requests==2.22.0 python-lib-flow.ci==1.0.19
 
 RUN mkdir -p ${WORKSPACE}
 RUN mkdir -p ${LIB_DIR}

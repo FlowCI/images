@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-docker build -t flowci/pyenv:1.3 .
+img=flowci/pyenv:1.3
+docker build -t ${img} .
+echo "Image ${img} has been built"

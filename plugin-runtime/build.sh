@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-docker build -t flowci/plugin-runtime:1.0 .
+img=flowci/plugin-runtime:1.0
+docker build -t ${img} .
+echo "Image ${img} has been built"

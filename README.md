@@ -1,2 +1,2 @@
 # pyenv-setup
-setup python environment docker image
+setup python environment docker image (only worked with bash)

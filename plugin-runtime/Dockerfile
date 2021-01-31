@@ -26,7 +26,7 @@ ENV PATH="${PY_BIN}:$PATH"
 
 RUN pyenv install ${PY_VERSION}
 RUN pyenv global 3.6.10
-RUN ${PY_BIN}/python3 -m pip install requests==2.22.0 python-lib-flow.ci==1.0.20
+RUN ${PY_BIN}/python3 -m pip install requests==2.22.0 python-lib-flow.ci==1.21.5
 
 # write to bashrc
 # RUN echo -e '\nif command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\n  eval "$(pyenv virtualenv-init -)"\nfi' >> ~/.bashrc
